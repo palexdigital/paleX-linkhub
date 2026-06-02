@@ -1,9 +1,24 @@
 /**
- * paléXlinkhub — optional link overrides
- * Edit the links array below to replace the buttons in index.html.
- * Leave empty [] to keep the HTML links as-is.
+ * paléXlinkhub — link configuration
+ * Edit the links array below to update your buttons.
  */
-const links = [];
+const links = [
+  {
+    title: "Official Website",
+    url: "https://palexdigital.github.io/paleXofficial/",
+    external: true,
+  },
+  {
+    title: "WhatsApp Me",
+    url: "https://wa.me/27627654746",
+    external: true,
+  },
+  {
+    title: "Email Me",
+    url: "mailto:palexdigital@gmail.com",
+    external: false,
+  },
+];
 
 const linksContainer = document.getElementById("links");
 const yearEl = document.getElementById("year");
@@ -18,8 +33,10 @@ function renderLinks() {
     anchor.className = "link-btn";
     anchor.href = link.url;
     anchor.textContent = link.title;
-    anchor.target = "_blank";
-    anchor.rel = "noopener noreferrer";
+    if (link.external) {
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+    }
     linksContainer.appendChild(anchor);
   });
 }
